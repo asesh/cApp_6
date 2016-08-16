@@ -17,6 +17,8 @@ using namespace std;
 
 #include <fstream>
 
+#include <queue>
+
 #include <deque>
 
 #include <vector>
