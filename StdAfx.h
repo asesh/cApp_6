@@ -41,4 +41,16 @@ using namespace std;
 
 #include <bitset>
 
+#include <functional>
+
+#include <sstream>
+
+#include <list>
+
+#include <forward_list>
+
+#include <cassert>
+
+#include <cstdint>
+
 #endif // STDAFX_H

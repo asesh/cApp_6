@@ -8,14 +8,6 @@
 #include "CircularLinkedList.h"
 #include "DoublyLinkedList.h"
 
-int factorization(int nNumber)
-{
-	if(nNumber == 0)
-		return nNumber;
-
-	return factorization(nNumber - 1) * factorization(nNumber - 2);
-}
-
 void printPrimeNumbers(int nNumberofPrimeNumbers)
 {
 	int nInput, nFlag = 0;
@@ -60,39 +52,36 @@ void bubbleSort()
 	}
 }
 
-std::mutex g_oGlobalMutex;
-std::condition_variable g_oWaitCondition;
-
-void thread1()
+struct S
 {
-	std::unique_lock<std::mutex> lockGlobalMutex(g_oGlobalMutex);
+	unsigned int m_n : 1;
 
-	g_oWaitCondition.wait(lockGlobalMutex);
+	int func()
+	{
+	}
+};
 
-	std::cout << "Initialization of thread1" << std::endl;
+//class CStream
+//{
+//	friend void operator<<(std::ostream oStream, std::string);
+//public:
+//	//std::ostream operator<<(int nNumber)
+//	//{
+//	//	return std::cout << nNumber;
+//	//}
+//};
 
-	std::this_thread::sleep_for(std::chrono::seconds(2));
+//void operator<<(std::ostream oStream, std::string oString)
+//{
+//	//oStream << oString;
+//
+//	oStream.
+//}
 
-	std::cout << "Exiting thread1" << std::endl;
-}
-
-void thread2()
+struct SData
 {
-	std::unique_lock<std::mutex> lockGlobalMutex(g_oGlobalMutex);
-
-	g_oWaitCondition.wait(lockGlobalMutex);
-
-	std::cout << "Initialization of thread2" << std::endl;
-
-	std::this_thread::sleep_for(std::chrono::seconds(2));
-
-	std::cout << "Exiting thread2" << std::endl;
-}
-
-void trySomething(int)
-{
-	std::this_thread::sleep_for(std::chrono::seconds(2));
-}
+	int nNumber : 1;
+};
 
 int _tmain()
 {
@@ -102,7 +91,40 @@ int _tmain()
 
 #endif // _DEBUG
 
-	::SetConsoleTitle("Asesh");
+	//S oS;
+	//oS.m_n = 0x2;
+	//std::cout << oS.m_n << std::endl;
+
+	// Fresh downcast
+	//Derived *pDerived = dynamic_cast<Derived *>(new SuperBase);
+	//pDerived->foo();
+	//delete pDerived;
+
+
+	//std::stringstream oStringStream;
+	//oStringStream << "hello this is my number " << 934343 << " so what would you like to do? : " << 1.2f << std::endl;
+	//std::cout << oStringStream.str() << std::endl;
+
+	//*pPointer = 12;
+
+	//delete pBase;
+
+	//for (int nRowCount = 0; nRowCount < 10; nRowCount++)
+	//{
+	//	for (int nColumnCount = 0; nColumnCount < 10; nColumnCount++)
+	//	{
+	//		if (nRowCount == nColumnCount)
+	//			std::cout << "*";
+	//		else
+	//			std::cout << " ";
+	//	}
+
+	//	std::cout << std::endl;
+	//}
+
+	//S s;
+	//s.m_n = 0x1;
+	//std::cout << s.m_n << std::endl;
 
 	//CCircularLinkedList<int> oLinkedList;
 	//oLinkedList.push(1);
